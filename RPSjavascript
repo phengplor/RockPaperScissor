@@ -1,0 +1,121 @@
+// JavaScript Document
+// Unit 2 Project 2
+
+$(document).ready(function(e) {
+	// Update image map with window resize
+	// ALL CREDIT GOES TO Matt Stow
+	// https://github.com/stowball/jQuery-rwdImageMaps/blob/master/README.md
+	// Hopefully someday I will be this good to create codes like this for others to use.
+	$('img[usemap]').rwdImageMaps();
+	
+	
+	// add a click event to the tabs
+	$('ul.tabNavigation li a').click(function(e){
+		// prevent default action
+		e.preventDefault();
+		
+		// the greater than symbol makes sure we grab the divs directly inside of .tabs (tab containers)
+		// add filter to get tab container that matches the hash of the link we clicked
+		$(this.hash).show().siblings('div').hide();
+		
+		// remove "selected" class from all tabs
+		// add Class to the element that was clicked on
+		// Create a jQuery object from a JS object/element
+		$(this).addClass('selected')
+			.parent()
+			.siblings()
+			.find('a')
+			.removeClass('selected');
+	}).first().click(); // click the first tab when the page loads
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		// Variables, get inputs
+		var person;
+		var computer;
+		
+		// variable to show computer choice and result 
+		var compChoice = '';
+		var result = '';
+		
+		// total user and computer points
+		var userPoint = 0;
+		var compPoint = 0;
+
+			
+		// user click function, everytime user clicks on an image computer will generate random number
+		$('#rpslsMap area').click(function(e){
+		
+			person = $(this).attr('id');
+			computer = Math.floor(Math.random() * 5) + 1;
+			
+			// uncomment alert to help write and determine code. Comment/hide alert once done 
+			//alert(person);
+			//alert(computer);
+			
+			// If else statement to choose computer choice depending on random number
+			if(computer === 1){
+				compChoice = 'scissors';
+			}else if(computer === 2){
+				compChoice = 'paper';
+			}else if(computer === 3){
+				compChoice = 'rock';
+			}else if(computer === 4){
+				compChoice = 'lizard';
+			}else if(computer === 5){
+				compChoice = 'spock';
+			}
+			
+			// if else statement to add choice & determine win or lose
+			if (person === compChoice){
+				userPoint + 0;
+				compPoint + 0;
+				result = 'Tie';
+			}else if(person === 'scissors' && (compChoice === 'paper' || compChoice === 'lizard')){
+				result = 'Win';
+				userPoint += 1;
+			}else if(person === 'paper' && (compChoice === 'rock' || compChoice === 'spock')){
+				result = 'Win';
+				userPoint += 1;
+			}else if(person === 'rock' && (compChoice === 'scissors' || compChoice === 'lizard')){
+				result = 'Win';
+				userPoint += 1;
+			}else if(person === 'lizard' && (compChoice === 'paper' || compChoice === 'spock')){
+				result = 'Win';
+				userPoint += 1;
+			}else if(person === 'spock' && (compChoice === 'scissors' || compChoice === 'rock')){
+				result = 'Win';
+				userPoint += 1;
+			}else{
+				result = 'Lose';
+				compPoint += 1;
+			}
+			
+			// This if else statement displays who wins best out of three && Clears points
+			if(userPoint === 3 || compPoint === 3){
+				if (userPoint === 3){
+					result = 'YOU WON THE ROCK PAPER SCISSOR!';	
+					userPoint = 0;
+					compPoint = 0;
+				}else{
+					result = 'COMPUTER OWNED YOU';	
+					userPoint = 0;
+					compPoint = 0;
+				}
+			}
+			
+			// Output results using divs		
+			$('#player').html('You picked ' + person + '\n<br>');
+			$('#computer').html('Computer picked ' + compChoice + '\n<br>');
+			$('#result').html('Result: ' + result + '\n<br>');
+			$('#track').html('Player: ' + userPoint + ' Computer: ' + compPoint);
+			
+		});	
+});
+
+
+
+// links for future use
+//https://github.com/davidjbradshaw/image-map-resizer
+//http://jsfiddle.net/jamietre/jQG48/
+//https://www.w3schools.com/css/css_rwd_images.asp
