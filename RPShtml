@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Rock Paper Scissors</title>
+	<link href="rpsC.css" type="text/css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script> 
+    <script src="https://raw.github.com/davidjbradshaw/imagemap-resizer/master/js/imageMapResizer.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="jquery.rwdImageMaps.min.js"></script>
+	<script src="rpsJ.js"></script>
+</head>
+<body>
+    <div class="tabs">
+    	<!-- TABS -->
+      	<ul class="tabNavigation">
+        	<li><a href="#about">ROCK! PAPER! SCISSORS! SPOCK! LIZARD!</a></li>
+      	</ul>
+      	<!-- tab containers -->
+      	<!-- ABOUT -->
+        <div id="about">
+      		<h2>ROCK! PAPER! SCISSORS! SPOCK! LIZARD!</h2>
+        	<h3>Choose your weapon. <br>Best out of 3</h3>
+     		<img  id="full" src="rpsPS.jpg" alt="Rules" style="width:600px height:600px" usemap="#dreamMap">
+        	<map name="dreamMap" id="rpslsMap">
+          		<area id="scissors" shape="circle" coords="294,116,85" href="#ones" alt="Scissor"> <!-- one -->
+          		<area id="paper" shape="circle" coords="490,249,85" href="#twos" alt="Paper"> <!-- two -->
+          		<area id="rock" shape="circle" coords="422,479,88" href="#threes" alt="Rock"> <!-- three -->
+          		<area id="lizard" shape="circle" coords="185,484,86" href="#fours" alt="Lizard"> <!-- four -->
+          		<area id="spock" shape="circle" coords="111,254,88" href="#fives" alt="Spock"> <!-- five -->
+        	</map>
+			<div><span id="player"></span><span id="computer"></span><span id="result"></span><span id="track"></span></div>
+            
+            <br><br>
+	</div>  
+</body>
+<footer>
+	<div id="footer">
+  		<p>ROCK! PAPER! SCISSORS!</p>
+    </div>
+</footer> 
+</html>
+
